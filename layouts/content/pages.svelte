@@ -5,7 +5,7 @@
   import Search from '../components/search.svelte';
   import TagsList from '../components/tagsList.svelte';
 
-  export let page, title, description, content;
+  export let page, title, description, content, allContent;
 </script>
 
 <section class="isMarginAutoCentered">
