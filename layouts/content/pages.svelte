@@ -9,11 +9,11 @@
 </script>
 
 <section class="isMarginAutoCentered">
-
+  
   <h1>{ page }</h1>
 
   {#if page === "archive" }
-    <Archive />
+    <Archive allContent />
   {/if}
 
   {#if page === "search" }
