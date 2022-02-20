@@ -28,7 +28,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (31:4) {#each results as result}
+// (30:4) {#each results as result}
 function create_each_block(ctx) {
 	let li;
 	let a;
@@ -200,11 +200,10 @@ function instance($$self, $$props, $$invalidate) {
 	let results = [];
 
 	const search = e => {
-		console.log(e);
 		$$invalidate(1, results = []);
 
 		posts.forEach(post => {
-			if (post.fields.title.includes(searchText) && searchText.length > 0) {
+			if (post.fields.title.toLowerCase().includes(searchText.toLowerCase()) && searchText.length > 0) {
 				results.push({
 					title: post.fields.title,
 					path: post.path
