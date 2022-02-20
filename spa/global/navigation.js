@@ -236,7 +236,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a0, "href", "/");
+			attr(a0, "href", ".");
 			attr(a0, "accesskey", "h");
 			attr(a0, "title", "PaperMod (Alt + H)");
 			attr(a0, "class", "logo svelte-5z702k");
@@ -255,20 +255,20 @@ function create_fragment(ctx) {
 			attr(ul0, "class", "lang-switch isFlex");
 			attr(span1, "class", "logo-switches");
 			attr(div, "class", "logoSide isFlex svelte-5z702k");
-			attr(a3, "href", "/archive");
+			attr(a3, "href", "archive");
 			attr(a3, "title", "Archive");
 			attr(a3, "class", "svelte-5z702k");
 			attr(li3, "class", "svelte-5z702k");
-			attr(a4, "href", "/categories");
+			attr(a4, "href", "categories");
 			attr(a4, "title", "Categories");
 			attr(a4, "class", "svelte-5z702k");
 			attr(li4, "class", "svelte-5z702k");
-			attr(a5, "href", "/search");
+			attr(a5, "href", "search");
 			attr(a5, "title", "Search (Alt + /)");
 			attr(a5, "accesskey", "/");
 			attr(a5, "class", "svelte-5z702k");
 			attr(li5, "class", "svelte-5z702k");
-			attr(a6, "href", "/tags");
+			attr(a6, "href", "tags");
 			attr(a6, "title", "Tags");
 			attr(a6, "class", "svelte-5z702k");
 			attr(li6, "class", "svelte-5z702k");

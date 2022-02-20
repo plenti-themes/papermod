@@ -104,7 +104,9 @@ const allContent = [{
   "pic": "littleNap.webp",
   "caption": "Little Nap Coffee Stand serves freshly roasted coffee | © amabird / Shutterstock.com",
   "teaser": "It has a laid-back atmosphere and the friendly owner...",
-  "body": "Just across from Yoyogi Park in Shibuya, you’ll find Little Nap Coffee Stand, a tiny coffee shop with a few extra seats outside. It has a laid-back atmosphere and the friendly owner, Daisuke Hamada, will be more than happy to engage in conversation with visitors. The high-quality beans are roasted on-site, and the <a href='/'>menu</a> includes single-origin drip coffee along with the typical espresso-based drinks, which are prepared on a Synesso machine."
+  "body": [
+    "Just across from Yoyogi Park in Shibuya, you’ll find Little Nap Coffee Stand, a tiny coffee shop with a few extra seats outside. It has a laid-back atmosphere and the friendly owner, Daisuke Hamada, will be more than happy to engage in conversation with visitors. The high-quality beans are roasted on-site, and the <a href='/'>menu</a> includes single-origin drip coffee along with the typical espresso-based drinks, which are prepared on a Synesso machine."
+  ]
 }
 
 },{
@@ -120,7 +122,9 @@ const allContent = [{
   "pic": "sbReserve.webp",
   "caption": "Starbucks Reserve Roastery Tokyo | © Starbucks Reserve Roastery Tokyo",
   "teaser": "...the largest Starbucks in the world.",
-  "body": "Yes, it’s a Starbucks, but not as you know it. Co-designed by architect Kengo Kuma, Nakameguro’s Reserve Roastery is the largest Starbucks in the world. The building incorporates Japanese design elements, such as origami-inspired ceilings and delicate cherry blossoms around the huge, hammered-copper cask rising through the centre of the building. The flowers are inspired by the springtime views over the river just outside, which is lined with sakura trees. On the floors above the roastery and café, the building houses Princi bakery, Teavana and the Arriviamo bar."
+  "body": [
+    "Yes, it’s a Starbucks, but not as you know it. Co-designed by architect Kengo Kuma, Nakameguro’s Reserve Roastery is the largest Starbucks in the world. The building incorporates Japanese design elements, such as origami-inspired ceilings and delicate cherry blossoms around the huge, hammered-copper cask rising through the centre of the building. The flowers are inspired by the springtime views over the river just outside, which is lined with sakura trees. On the floors above the roastery and café, the building houses Princi bakery, Teavana and the Arriviamo bar."
+  ]
 }
 
 },{
