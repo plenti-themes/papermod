@@ -1,11 +1,9 @@
 <script>
-  import Uses from "../components/source.svelte";
   import Archive from '../components/archive.svelte';
-  import CategoriesList from '../components/categoriesList.svelte';
   import Search from '../components/search.svelte';
   import TagsList from '../components/tagsList.svelte';
 
-  export let page, title, description, content, allContent;
+  export let page, allContent;
 </script>
 
 <section class="isMarginAutoCentered">
@@ -24,17 +22,12 @@
     <TagsList {allContent} />
   {/if}
 
-  {#if page === "categories" }
-    <CategoriesList />
-  {/if}
-
   <p><a href=".">Back home</a></p>
 
 </section>
 
 <style>
   section {
-    /*background-color: beige;*/
     width: 60vh;
     padding-top: 50px;
   }

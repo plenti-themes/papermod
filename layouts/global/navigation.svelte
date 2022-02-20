@@ -21,7 +21,6 @@
 
   <ul id="menu" onscroll="menu_on_scroll()" class="menu isFlex">
     <li><a href="archive" title="Archive"><span>Archive</span></a></li>
-    <li><a href="categories" title="Categories"><span>Categories</span></a></li>
     <li><a href="search" title="Search (Alt + /)" accesskey="/"><span>Search</span></a></li>
     <li><a href="tags" title="Tags"><span>Tags</span></a></li>
   </ul>

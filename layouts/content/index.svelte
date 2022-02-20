@@ -1,12 +1,9 @@
 <script>
-	import Grid from '../components/grid.svelte';
-	import Uses from "../components/source.svelte";
 	import Pager from "../components/pager.svelte";
+	import Opening from '../components/opening.svelte';
+	import PostCardCollection from '../components/postCardCollection.svelte';
 
-  import Opening from '../components/opening.svelte';
-  import PostCardCollection from '../components/postCardCollection.svelte';
-
-  export let title, intro, components, content, allContent, siteName;
+	export let content, allContent, siteName;
 
 	$: currentPage = content.pager;
 	let postsPerPage = 5;
@@ -35,21 +32,3 @@
     margin-bottom: 50px;
   }
 </style>
-
-
-<!-- <h1>{title}</h1>
-
-<section id="intro">
-	{#each intro as paragraph}
-		<p>{@html paragraph}</p>
-	{/each}
-</section>
-
-<div>
-	<h3>Recent blog posts:</h3>
-	<Grid items={allPosts} {postRangeLow} {postRangeHigh} />
-	<br />
-</div>
-<Pager {currentPage} {totalPages} />
-
-<Uses {content} /> -->
