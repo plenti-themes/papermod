@@ -37,7 +37,7 @@ const allContent = [{
 
 },{
 "pager": 1,
-"path": "/archive",
+"path": "archive",
 "type": "pages",
 "filename": "archive.json",
 "fields": {
@@ -51,7 +51,7 @@ const allContent = [{
 
 },{
 "pager": 1,
-"path": "/categories",
+"path": "categories",
 "type": "pages",
 "filename": "categories.json",
 "fields": {
@@ -65,7 +65,7 @@ const allContent = [{
 
 },{
 "pager": 1,
-"path": "/search",
+"path": "search",
 "type": "pages",
 "filename": "search.json",
 "fields": {
@@ -79,7 +79,7 @@ const allContent = [{
 
 },{
 "pager": 1,
-"path": "/tags",
+"path": "tags",
 "type": "pages",
 "filename": "tags.json",
 "fields": {
@@ -414,19 +414,19 @@ const allContent = [{
 "fields": {}
 },{
 "pager": 1,
-"path": "/1",
+"path": "1",
 "type": "index",
 "filename": "index.json",
 "fields": { "siteName": "PaperMod", "title": "Welcome to Plenti!", "intro": [ "Take a look around to see how things work.", "The bottom of each page will tell you where to find the corresponding template in your project.", "If you get stuck, check out our <a href='https://plenti.co/docs' target='blank' rel='noopener noreferrer'>docs</a>. If you need extra help, <a href='https://github.com/plentico/plenti/issues/new' target='blank' rel='noopener noreferrer'>let us know</a>! Enjoy :)" ] } 
 },{
 "pager": 2,
-"path": "/2",
+"path": "2",
 "type": "index",
 "filename": "index.json",
 "fields": { "siteName": "PaperMod", "title": "Welcome to Plenti!", "intro": [ "Take a look around to see how things work.", "The bottom of each page will tell you where to find the corresponding template in your project.", "If you get stuck, check out our <a href='https://plenti.co/docs' target='blank' rel='noopener noreferrer'>docs</a>. If you need extra help, <a href='https://github.com/plentico/plenti/issues/new' target='blank' rel='noopener noreferrer'>let us know</a>! Enjoy :)" ] } 
 },{
 "pager": 3,
-"path": "/3",
+"path": "3",
 "type": "index",
 "filename": "index.json",
 "fields": { "siteName": "PaperMod", "title": "Welcome to Plenti!", "intro": [ "Take a look around to see how things work.", "The bottom of each page will tell you where to find the corresponding template in your project.", "If you get stuck, check out our <a href='https://plenti.co/docs' target='blank' rel='noopener noreferrer'>docs</a>. If you need extra help, <a href='https://github.com/plentico/plenti/issues/new' target='blank' rel='noopener noreferrer'>let us know</a>! Enjoy :)" ] } 
