@@ -1,12 +1,12 @@
 <script>
   export let allContent;
-  let tags = allContent.filter(content => content.type == "tags");
+  export let tags = allContent.filter(content => content.type == "tags");
   let posts = allContent.filter(content => content.type == "posts");
 
   let tagList = [];
   tags.forEach(tag => {
     let count = 0;
-    let tagName = tag.filename.replace(".json", "");
+    let tagName = tag.filename ? tag.filename.replace(".json", "") : tag;
     posts.forEach(post => {
       if (post.fields.tags && post.fields.tags.includes(tagName)) {
         count++;
@@ -14,7 +14,7 @@
     });
     tagList.push({
       name: tagName,
-      path: tag.path,
+      path: "tags/" + tagName,
       count: count  
     });
   });

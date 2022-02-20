@@ -1,5 +1,6 @@
 <script>
-    export let title, date, readTime, author, pic, caption, body, tags;
+    export let title, date, readTime, author, pic, caption, body, tags, allContent;
+    import TagsList from '../components/tagsList.svelte';
 </script>
 
 <section class="isMarginAutoCentered">
@@ -23,11 +24,7 @@
     </article>
 
     {#if tags}
-      <ul>
-        {#each tags as tag}
-          <li><a href="tags/{tag}">{tag}</a></li>  
-        {/each}
-      </ul>
+      <TagsList {tags} {allContent} />
     {/if}
 
 </section>
@@ -59,21 +56,4 @@
     max-width: 100%;
   }
 
-  ul {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  li {
-    margin-right: 10px;
-    background-color: #cecece;
-    padding: 20px 15px 10px 15px;
-    border-radius: 8px;
-  }
-
-  ul li a {
-    text-decoration: none;
-    color: black;
-  }
 </style>
