@@ -15,7 +15,7 @@
   {/if}
 
   {#if page === "search" }
-    <Search />
+    <Search {allContent} />
   {/if}
 
   {#if page === "tags" }

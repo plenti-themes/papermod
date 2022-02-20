@@ -1,11 +1,34 @@
+<script>
+  export let allContent;
+  let posts = allContent.filter(content => content.type == "posts");
+
+  let searchText;
+  let results = [];
+  const search = e => {
+    console.log(e);
+    results = [];
+    posts.forEach(post => {
+      if (post.fields.title.includes(searchText) && searchText.length > 0) {
+        results.push(post.fields.title);
+      }
+    });
+  }
+</script>
+
 <div id="searchbox">
   <input
+    bind:value={searchText}
+    on:keyup={search}
     class="searchInput"
     autofocus=""
-    placeholder="search ↵"
+    placeholder="search posts ↵"
     aria-label="search"
     type="search">
-  <ul id="searchResults" aria-label="search results"></ul>
+  <ul id="searchResults" aria-label="search results">
+    {#each results as result}
+      <li>{result}</li>
+    {/each}
+  </ul>
 </div>
 
 <style>
