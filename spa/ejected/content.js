@@ -41,26 +41,7 @@ const allContent = [{
 "type": "pages",
 "filename": "archive.json",
 "fields": {
-  "page": "archive",
-  "description": [
-    "Plenti is a minimalist <a href='https://jamstack.org/' target='blank' rel='noopener noreferrer'>JAMstack</a> framework that's flexible and easy to use.",
-    "We've cut out as many dependencies as possible so you can focus on being productive instead of wrestling with tools.",
-    "The <a href='https://svelte.dev/' target='blank' rel='noopener noreferrer'>Svelte</a> frontend gives users get a snappy experience, and the <a href='https://golang.org/' target='blank' rel='noopener noreferrer'>Go</a> backend builds fast so you can get more done."
-  ]
-}
-
-},{
-"pager": 1,
-"path": "categories",
-"type": "pages",
-"filename": "categories.json",
-"fields": {
-  "page": "categories",
-  "description": [
-    "Plenti is a minimalist <a href='https://jamstack.org/' target='blank' rel='noopener noreferrer'>JAMstack</a> framework that's flexible and easy to use.",
-    "We've cut out as many dependencies as possible so you can focus on being productive instead of wrestling with tools.",
-    "The <a href='https://svelte.dev/' target='blank' rel='noopener noreferrer'>Svelte</a> frontend gives users get a snappy experience, and the <a href='https://golang.org/' target='blank' rel='noopener noreferrer'>Go</a> backend builds fast so you can get more done."
-  ]
+  "page": "archive"
 }
 
 },{
@@ -69,12 +50,7 @@ const allContent = [{
 "type": "pages",
 "filename": "search.json",
 "fields": {
-  "page": "search",
-  "description": [
-    "Plenti is a minimalist <a href='https://jamstack.org/' target='blank' rel='noopener noreferrer'>JAMstack</a> framework that's flexible and easy to use.",
-    "We've cut out as many dependencies as possible so you can focus on being productive instead of wrestling with tools.",
-    "The <a href='https://svelte.dev/' target='blank' rel='noopener noreferrer'>Svelte</a> frontend gives users get a snappy experience, and the <a href='https://golang.org/' target='blank' rel='noopener noreferrer'>Go</a> backend builds fast so you can get more done."
-  ]
+  "page": "search"
 }
 
 },{
@@ -83,12 +59,7 @@ const allContent = [{
 "type": "pages",
 "filename": "tags.json",
 "fields": {
-  "page": "tags",
-  "description": [
-    "Plenti is a minimalist <a href='https://jamstack.org/' target='blank' rel='noopener noreferrer'>JAMstack</a> framework that's flexible and easy to use.",
-    "We've cut out as many dependencies as possible so you can focus on being productive instead of wrestling with tools.",
-    "The <a href='https://svelte.dev/' target='blank' rel='noopener noreferrer'>Svelte</a> frontend gives users get a snappy experience, and the <a href='https://golang.org/' target='blank' rel='noopener noreferrer'>Go</a> backend builds fast so you can get more done."
-  ]
+  "page": "tags"
 }
 
 },{
@@ -106,6 +77,10 @@ const allContent = [{
   "teaser": "It has a laid-back atmosphere and the friendly owner...",
   "body": [
     "Just across from Yoyogi Park in Shibuya, you’ll find Little Nap Coffee Stand, a tiny coffee shop with a few extra seats outside. It has a laid-back atmosphere and the friendly owner, Daisuke Hamada, will be more than happy to engage in conversation with visitors. The high-quality beans are roasted on-site, and the <a href='/'>menu</a> includes single-origin drip coffee along with the typical espresso-based drinks, which are prepared on a Synesso machine."
+  ],
+  "tags": [
+    "hekinan",
+    "specialty"
   ]
 }
 
@@ -124,6 +99,10 @@ const allContent = [{
   "teaser": "...the largest Starbucks in the world.",
   "body": [
     "Yes, it’s a Starbucks, but not as you know it. Co-designed by architect Kengo Kuma, Nakameguro’s Reserve Roastery is the largest Starbucks in the world. The building incorporates Japanese design elements, such as origami-inspired ceilings and delicate cherry blossoms around the huge, hammered-copper cask rising through the centre of the building. The flowers are inspired by the springtime views over the river just outside, which is lined with sakura trees. On the floors above the roastery and café, the building houses Princi bakery, Teavana and the Arriviamo bar."
+  ],
+  "tags": [
+    "nagoya",
+    "starbucks"
   ]
 }
 
@@ -160,6 +139,9 @@ const allContent = [{
   "teaser": "The drinks aren’t cheap....",
   "body": [
     "Open for 25 years, Chatei Hatou is a slice of traditional Tokyo kissaten culture in the middle of hypermodern Shibuya. The interior is cool and quiet, clad in dark wood accented with greenery, there’s no WiFi to distract you and you can only pay in cash. The drinks aren’t cheap, but they’re expertly made from the highest-quality ingredients, whether bean or leaf, and there’s always a tempting array of cakes to enjoy as you linger over the cup. As with most traditional kissaten, smoking is allowed here, so bear that in mind if it’ll ruin your meditation on the perfect cup of dark-roast coffee."
+  ],
+  "tags": [
+    "starbucks"
   ]
 }
 
@@ -178,7 +160,14 @@ const allContent = [{
   "teaser": "The space is warm, welcoming and unpretentious...",
   "body": [
     "Sarutahiko Coffee was established in 2011 by the actor Tomoyuki Otsuka, with the goal of bringing a smile to your face with just one cup of coffee. The intimate Ebisu flagship store can seat up to 25 people, serving drip coffee and espresso drinks from the Synesso machine, and the single-origin beans and blends are high quality. The space is warm, welcoming and unpretentious, and you can buy beans to take home with you."
-    ]
+  ],
+  "tags": [
+    "yokohama",
+    "kissaten",
+    "tokyo",
+    "sapporo",
+    "specialty"
+  ]
 }
 
 },{
@@ -197,7 +186,11 @@ const allContent = [{
   "body": [
     "Located on the second floor of a sleek modern building in Kanda, Social Good Roasters lives up to its name, aiming to provide not only excellent coffee in a relaxed environment but also fulfilling jobs for neurodiverse or disabled employees. Their medium-roast Social Good Roasters Blend makes deliciously smooth espressos and lattes, which you can enjoy in the light, welcoming café."
   ],
-  "archived": true
+  "archived": true,
+  "tags": [
+    "specialty",
+    "nagoya"
+  ]
 }
 
 },{
@@ -216,6 +209,10 @@ const allContent = [{
   "body": [
     "自宅の近くや職場の近く、出張先の近くなど、全国各地のさまざまな地域にある珈琲館。実は、新しい店舗が続々とオープンしているのをご存知ですか？2020年に入ってからも、利府店（宮城県）がリニューアルオープンし、今宿店（神奈川県）、祖師ヶ谷大蔵店（東京都）が続々とグランドオープンしました",
     "もしかすると、あなたの生活圏の近くにも、新しく珈琲館がオープンしているかもしれません。「どこに店舗があるの？」と気になる方は、珈琲館のウェブサイト内にある「添付検索」メニューをクリック。フリーワード検索で住所を入力するか、エリア検索することで、お近くの珈琲館のお店をお探しいただけます。また、「珈琲館 蔵」や「CAFE DI ESPRESSO」など、お好みのブランドを指定して検索することもできます。"
+  ],
+  "tags": [
+    "nagoya",
+    "sapporo"
   ]
 }
 
@@ -235,6 +232,10 @@ const allContent = [{
   "body": [
     "For a little window into the third wave of Tokyo’s coffee scene, About Life is a must-visit spot. It’s one of many stylish shops in the heart of bustling Shibuya. This area is popular with both the hip tourist crowd and Japanese third wave enthusiasts. You wouldn’t know it from the name, but About Life is the second location of Onibus Coffee. The team behind these cafés are obsessive about quality: every drink is test-tasted to make sure it meets their standards and the quality control manager is almost always on staff.",
     "One of the coolest things about this <a class='italic' href='/'>café</a>  is that it also offers you a choice of drip and espresso coffees from other Tokyo roasters. And they regularly feature international beans and guest baristas. What’s more, the sleek, clean design of this compact specialty coffee café has attracted many admirers and may make it worth a visit in its own right – it’s now one of the most Instagrammed shops in <a href='/'>Japan</a>. Just search <i>#aboutlifecoffeebrewers</i> to see what I mean."
+  ],
+  "tags": [
+    "yokohama",
+    "tokyo"
   ]
 }
 
@@ -255,6 +256,9 @@ const allContent = [{
   "body": [
     "Japan is the home country of % Arabica, and we are excited to now serve our loyal customers here in the picturesque Northern city of Niseko; one of the world’s greatest ski destinations. We are located in the centre of Niseko, called Hirafu. The kiosk is part of Hirafu188, which is a commercial space and accommodation complex in one. All day, skiers and snowboarders walk up to Niseko Mt. resort, along the road beside us as they head for a day on the slopes.",
     "The trailer kiosk has become a trademark of % Arabica countries worldwide, and the inviting design is instantly recognizable, by design as well as its fast flowing, functionally designed space for customers to pass bye and grab a coffee as they go about their day. We are also happy that our baristas from Kyoto stores can come to Niseko in the winter months to work, ski or snowboard and brew amazing coffee for the ski community – another chance for us to spread our See The World Through Coffee ethos."
+  ],
+  "tags": [
+    "kissaten"
   ]
 }
 
@@ -294,6 +298,9 @@ const allContent = [{
   "body": [
       "The Kiyosumi Shirakawa district of Tokyo has become somewhat of a coffee destination. With the appearance of two big players, the Allpress Espresso Tokyo Roastery & Cafe in 2014 and Japan’s first Blue Bottle roastery in 2016, it quickly gained popularity. Beforehand, and still today actually, the community specialty roastery ‘Arise Coffee Roasters’ was one of its kind in the neighbourhood. Nowadays, these three build a coffee-triangle with Arise, Blue Bottle and Allpress Espresso all in close proximity to each other.",
       "The timber storage warehouse that is home to New Zealand’s favourite coffee roastery, (which started 1989 as a simple coffee cart - impressive, huh?), was carefully restored to celebrate its past while giving it a new purpose in the present. Café, roastery and training facilities are all under one roof and open for guests to learn, taste and enjoy. Their signature <a href='/'>Allpress Espresso Blend</a> is made up of four different origins, namely Brazil, Colombia, Guatemala & Sumatra, to create a sweet, balanced and complex brew. While it will always be on one of the grinders, the available single origin beans vary."
+  ],
+  "tags": [
+    "specialty"
   ]
 }
 
@@ -333,6 +340,11 @@ const allContent = [{
     "The history of coffee in Japan goes back further than you’d think. When Japan isolated itself from 1638-1858 (a period called <i>sakoku</i>), foreign merchants’ access to Japan was strictly regulated. On the tiny island of Dejima, in Nagasaki, European merchants drank coffee, though it did not yet catch on among Japanese people. When sakoku ended and gave way to the Meiji restoration, coffee gradually began to be imported, with Tokyo’s first coffee shop apparently opening in 1888.",
     "World Wars I and II slowed coffee imports down, but in the 1960s it became fashionable, and today Japan is among the world’s largest importers of coffee, bringing in US$1.4 billion worth in 2014 alone.",
     "You can get coffee almost anywhere in Japan, from big chains like Doutor (not particularly recommended!) and Starbucks (a good place for <a href='/'>Wi-Fi in Japan</a>), to the millions of vending machines across the country, which dispense it in both hot and cold cans."
+  ],
+  "tags": [
+    "tokyo",
+    "kyoto",
+    "sapporo"
   ]
 }
 

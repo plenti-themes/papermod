@@ -62,11 +62,6 @@ function create_fragment(ctx) {
 	let a5;
 	let span4;
 	let t13;
-	let t14;
-	let li6;
-	let a6;
-	let span5;
-	let t15;
 	let current;
 	toggletheme = new ToggleTheme({});
 
@@ -102,17 +97,12 @@ function create_fragment(ctx) {
 			li4 = element("li");
 			a4 = element("a");
 			span3 = element("span");
-			t11 = text("Categories");
+			t11 = text("Search");
 			t12 = space();
 			li5 = element("li");
 			a5 = element("a");
 			span4 = element("span");
-			t13 = text("Search");
-			t14 = space();
-			li6 = element("li");
-			a6 = element("a");
-			span5 = element("span");
-			t15 = text("Tags");
+			t13 = text("Tags");
 			this.h();
 		},
 		l(nodes) {
@@ -194,43 +184,32 @@ function create_fragment(ctx) {
 			t10 = claim_space(ul1_nodes);
 			li4 = claim_element(ul1_nodes, "LI", { class: true });
 			var li4_nodes = children(li4);
-			a4 = claim_element(li4_nodes, "A", { href: true, title: true, class: true });
-			var a4_nodes = children(a4);
-			span3 = claim_element(a4_nodes, "SPAN", {});
-			var span3_nodes = children(span3);
-			t11 = claim_text(span3_nodes, "Categories");
-			span3_nodes.forEach(detach);
-			a4_nodes.forEach(detach);
-			li4_nodes.forEach(detach);
-			t12 = claim_space(ul1_nodes);
-			li5 = claim_element(ul1_nodes, "LI", { class: true });
-			var li5_nodes = children(li5);
 
-			a5 = claim_element(li5_nodes, "A", {
+			a4 = claim_element(li4_nodes, "A", {
 				href: true,
 				title: true,
 				accesskey: true,
 				class: true
 			});
 
+			var a4_nodes = children(a4);
+			span3 = claim_element(a4_nodes, "SPAN", {});
+			var span3_nodes = children(span3);
+			t11 = claim_text(span3_nodes, "Search");
+			span3_nodes.forEach(detach);
+			a4_nodes.forEach(detach);
+			li4_nodes.forEach(detach);
+			t12 = claim_space(ul1_nodes);
+			li5 = claim_element(ul1_nodes, "LI", { class: true });
+			var li5_nodes = children(li5);
+			a5 = claim_element(li5_nodes, "A", { href: true, title: true, class: true });
 			var a5_nodes = children(a5);
 			span4 = claim_element(a5_nodes, "SPAN", {});
 			var span4_nodes = children(span4);
-			t13 = claim_text(span4_nodes, "Search");
+			t13 = claim_text(span4_nodes, "Tags");
 			span4_nodes.forEach(detach);
 			a5_nodes.forEach(detach);
 			li5_nodes.forEach(detach);
-			t14 = claim_space(ul1_nodes);
-			li6 = claim_element(ul1_nodes, "LI", { class: true });
-			var li6_nodes = children(li6);
-			a6 = claim_element(li6_nodes, "A", { href: true, title: true, class: true });
-			var a6_nodes = children(a6);
-			span5 = claim_element(a6_nodes, "SPAN", {});
-			var span5_nodes = children(span5);
-			t15 = claim_text(span5_nodes, "Tags");
-			span5_nodes.forEach(detach);
-			a6_nodes.forEach(detach);
-			li6_nodes.forEach(detach);
 			ul1_nodes.forEach(detach);
 			nav_nodes.forEach(detach);
 			this.h();
@@ -259,19 +238,15 @@ function create_fragment(ctx) {
 			attr(a3, "title", "Archive");
 			attr(a3, "class", "svelte-5z702k");
 			attr(li3, "class", "svelte-5z702k");
-			attr(a4, "href", "categories");
-			attr(a4, "title", "Categories");
+			attr(a4, "href", "search");
+			attr(a4, "title", "Search (Alt + /)");
+			attr(a4, "accesskey", "/");
 			attr(a4, "class", "svelte-5z702k");
 			attr(li4, "class", "svelte-5z702k");
-			attr(a5, "href", "search");
-			attr(a5, "title", "Search (Alt + /)");
-			attr(a5, "accesskey", "/");
+			attr(a5, "href", "tags");
+			attr(a5, "title", "Tags");
 			attr(a5, "class", "svelte-5z702k");
 			attr(li5, "class", "svelte-5z702k");
-			attr(a6, "href", "tags");
-			attr(a6, "title", "Tags");
-			attr(a6, "class", "svelte-5z702k");
-			attr(li6, "class", "svelte-5z702k");
 			attr(ul1, "id", "menu");
 			attr(ul1, "onscroll", "menu_on_scroll()");
 			attr(ul1, "class", "menu isFlex svelte-5z702k");
@@ -314,11 +289,6 @@ function create_fragment(ctx) {
 			append(li5, a5);
 			append(a5, span4);
 			append(span4, t13);
-			append(ul1, t14);
-			append(ul1, li6);
-			append(li6, a6);
-			append(a6, span5);
-			append(span5, t15);
 			current = true;
 		},
 		p: noop,

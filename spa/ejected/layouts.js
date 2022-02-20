@@ -1,12 +1,10 @@
 export {default as layouts_components_archive_svelte} from '../components/archive.js';
-export {default as layouts_components_categoriesList_svelte} from '../components/categoriesList.js';
 export {default as layouts_components_grid_svelte} from '../components/grid.js';
 export {default as layouts_components_opening_svelte} from '../components/opening.js';
 export {default as layouts_components_pager_svelte} from '../components/pager.js';
 export {default as layouts_components_postCard_svelte} from '../components/postCard.js';
 export {default as layouts_components_postCardCollection_svelte} from '../components/postCardCollection.js';
 export {default as layouts_components_search_svelte} from '../components/search.js';
-export {default as layouts_components_source_svelte} from '../components/source.js';
 export {default as layouts_components_tagsList_svelte} from '../components/tagsList.js';
 export {default as layouts_components_toggleTheme_svelte} from '../components/toggleTheme.js';
 export {default as layouts_content_404_svelte} from '../content/404.js';

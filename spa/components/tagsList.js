@@ -26,7 +26,7 @@ function get_each_context(ctx, list, i) {
 function create_each_block(ctx) {
 	let li;
 	let a;
-	let t0_value = /*tag*/ ctx[2].filename + "";
+	let t0_value = /*tag*/ ctx[2].filename.replace(".json", "") + "";
 	let t0;
 	let sup;
 	let t1;

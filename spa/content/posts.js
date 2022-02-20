@@ -21,14 +21,20 @@ import {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[7] = list[i];
+	child_ctx[8] = list[i];
+	return child_ctx;
+}
+
+function get_each_context_1(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[11] = list[i];
 	return child_ctx;
 }
 
 // (20:6) {#each body as paragraph}
-function create_each_block(ctx) {
+function create_each_block_1(ctx) {
 	let p;
-	let raw_value = /*paragraph*/ ctx[7] + "";
+	let raw_value = /*paragraph*/ ctx[11] + "";
 
 	return {
 		c() {
@@ -44,10 +50,130 @@ function create_each_block(ctx) {
 			p.innerHTML = raw_value;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*body*/ 64 && raw_value !== (raw_value = /*paragraph*/ ctx[7] + "")) p.innerHTML = raw_value;;
+			if (dirty & /*body*/ 64 && raw_value !== (raw_value = /*paragraph*/ ctx[11] + "")) p.innerHTML = raw_value;;
 		},
 		d(detaching) {
 			if (detaching) detach(p);
+		}
+	};
+}
+
+// (25:4) {#if tags}
+function create_if_block(ctx) {
+	let ul;
+	let each_value = /*tags*/ ctx[7];
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
+
+	return {
+		c() {
+			ul = element("ul");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			this.h();
+		},
+		l(nodes) {
+			ul = claim_element(nodes, "UL", { class: true });
+			var ul_nodes = children(ul);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(ul_nodes);
+			}
+
+			ul_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(ul, "class", "svelte-120fzcn");
+		},
+		m(target, anchor) {
+			insert(target, ul, anchor);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(ul, null);
+			}
+		},
+		p(ctx, dirty) {
+			if (dirty & /*tags*/ 128) {
+				each_value = /*tags*/ ctx[7];
+				let i;
+
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(ul, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value.length;
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(ul);
+			destroy_each(each_blocks, detaching);
+		}
+	};
+}
+
+// (27:8) {#each tags as tag}
+function create_each_block(ctx) {
+	let li;
+	let a;
+	let t_value = /*tag*/ ctx[8] + "";
+	let t;
+	let a_href_value;
+
+	return {
+		c() {
+			li = element("li");
+			a = element("a");
+			t = text(t_value);
+			this.h();
+		},
+		l(nodes) {
+			li = claim_element(nodes, "LI", { class: true });
+			var li_nodes = children(li);
+			a = claim_element(li_nodes, "A", { href: true, class: true });
+			var a_nodes = children(a);
+			t = claim_text(a_nodes, t_value);
+			a_nodes.forEach(detach);
+			li_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(a, "href", a_href_value = "tags/" + /*tag*/ ctx[8]);
+			attr(a, "class", "svelte-120fzcn");
+			attr(li, "class", "svelte-120fzcn");
+		},
+		m(target, anchor) {
+			insert(target, li, anchor);
+			append(li, a);
+			append(a, t);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*tags*/ 128 && t_value !== (t_value = /*tag*/ ctx[8] + "")) set_data(t, t_value);
+
+			if (dirty & /*tags*/ 128 && a_href_value !== (a_href_value = "tags/" + /*tag*/ ctx[8])) {
+				attr(a, "href", a_href_value);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(li);
 		}
 	};
 }
@@ -77,12 +203,15 @@ function create_fragment(ctx) {
 	let t11;
 	let t12;
 	let article;
-	let each_value = /*body*/ ctx[6];
+	let t13;
+	let each_value_1 = /*body*/ ctx[6];
 	let each_blocks = [];
 
-	for (let i = 0; i < each_value.length; i += 1) {
-		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	for (let i = 0; i < each_value_1.length; i += 1) {
+		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
 	}
+
+	let if_block = /*tags*/ ctx[7] && create_if_block(ctx);
 
 	return {
 		c() {
@@ -114,6 +243,8 @@ function create_fragment(ctx) {
 				each_blocks[i].c();
 			}
 
+			t13 = space();
+			if (if_block) if_block.c();
 			this.h();
 		},
 		l(nodes) {
@@ -162,21 +293,23 @@ function create_fragment(ctx) {
 			}
 
 			article_nodes.forEach(detach);
+			t13 = claim_space(section_nodes);
+			if (if_block) if_block.l(section_nodes);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			if (img.src !== (img_src_value = "assets/images/" + /*pic*/ ctx[4])) attr(img, "src", img_src_value);
 			attr(img, "alt", "title");
-			attr(img, "class", "svelte-17dn2c9");
+			attr(img, "class", "svelte-120fzcn");
 			attr(p, "class", "caption");
-			attr(h1, "class", " svelte-17dn2c9");
+			attr(h1, "class", " svelte-120fzcn");
 			attr(span0, "class", "");
 			attr(span1, "class", "");
-			attr(div, "class", "byLine svelte-17dn2c9");
-			attr(header, "class", " svelte-17dn2c9");
+			attr(div, "class", "byLine svelte-120fzcn");
+			attr(header, "class", " svelte-120fzcn");
 			attr(article, "class", "");
-			attr(section, "class", "isMarginAutoCentered svelte-17dn2c9");
+			attr(section, "class", "isMarginAutoCentered svelte-120fzcn");
 		},
 		m(target, anchor) {
 			insert(target, section, anchor);
@@ -206,6 +339,9 @@ function create_fragment(ctx) {
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].m(article, null);
 			}
+
+			append(section, t13);
+			if (if_block) if_block.m(section, null);
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*pic*/ 16 && img.src !== (img_src_value = "assets/images/" + /*pic*/ ctx[4])) {
@@ -219,16 +355,16 @@ function create_fragment(ctx) {
 			if (dirty & /*author*/ 8) set_data(t11, /*author*/ ctx[3]);
 
 			if (dirty & /*body*/ 64) {
-				each_value = /*body*/ ctx[6];
+				each_value_1 = /*body*/ ctx[6];
 				let i;
 
-				for (i = 0; i < each_value.length; i += 1) {
-					const child_ctx = get_each_context(ctx, each_value, i);
+				for (i = 0; i < each_value_1.length; i += 1) {
+					const child_ctx = get_each_context_1(ctx, each_value_1, i);
 
 					if (each_blocks[i]) {
 						each_blocks[i].p(child_ctx, dirty);
 					} else {
-						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i] = create_each_block_1(child_ctx);
 						each_blocks[i].c();
 						each_blocks[i].m(article, null);
 					}
@@ -238,7 +374,20 @@ function create_fragment(ctx) {
 					each_blocks[i].d(1);
 				}
 
-				each_blocks.length = each_value.length;
+				each_blocks.length = each_value_1.length;
+			}
+
+			if (/*tags*/ ctx[7]) {
+				if (if_block) {
+					if_block.p(ctx, dirty);
+				} else {
+					if_block = create_if_block(ctx);
+					if_block.c();
+					if_block.m(section, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
 			}
 		},
 		i: noop,
@@ -246,6 +395,7 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(section);
 			destroy_each(each_blocks, detaching);
+			if (if_block) if_block.d();
 		}
 	};
 }
@@ -257,7 +407,8 @@ function instance($$self, $$props, $$invalidate) {
 		{ author } = $$props,
 		{ pic } = $$props,
 		{ caption } = $$props,
-		{ body } = $$props;
+		{ body } = $$props,
+		{ tags } = $$props;
 
 	$$self.$$set = $$props => {
 		if ("title" in $$props) $$invalidate(0, title = $$props.title);
@@ -267,9 +418,10 @@ function instance($$self, $$props, $$invalidate) {
 		if ("pic" in $$props) $$invalidate(4, pic = $$props.pic);
 		if ("caption" in $$props) $$invalidate(5, caption = $$props.caption);
 		if ("body" in $$props) $$invalidate(6, body = $$props.body);
+		if ("tags" in $$props) $$invalidate(7, tags = $$props.tags);
 	};
 
-	return [title, date, readTime, author, pic, caption, body];
+	return [title, date, readTime, author, pic, caption, body, tags];
 }
 
 class Component extends SvelteComponent {
@@ -283,7 +435,8 @@ class Component extends SvelteComponent {
 			author: 3,
 			pic: 4,
 			caption: 5,
-			body: 6
+			body: 6,
+			tags: 7
 		});
 	}
 }
