@@ -6,20 +6,87 @@ import {
 	children,
 	claim_element,
 	claim_space,
+	claim_text,
+	destroy_each,
 	detach,
 	element,
 	init,
 	insert,
+	listen,
 	noop,
+	run_all,
 	safe_not_equal,
-	space
+	set_data,
+	set_input_value,
+	space,
+	text
 } from '../web_modules/svelte/internal/index.mjs';
+
+function get_each_context(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[6] = list[i];
+	return child_ctx;
+}
+
+// (31:4) {#each results as result}
+function create_each_block(ctx) {
+	let li;
+	let a;
+	let t_value = /*result*/ ctx[6].title + "";
+	let t;
+	let a_href_value;
+
+	return {
+		c() {
+			li = element("li");
+			a = element("a");
+			t = text(t_value);
+			this.h();
+		},
+		l(nodes) {
+			li = claim_element(nodes, "LI", {});
+			var li_nodes = children(li);
+			a = claim_element(li_nodes, "A", { href: true });
+			var a_nodes = children(a);
+			t = claim_text(a_nodes, t_value);
+			a_nodes.forEach(detach);
+			li_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(a, "href", a_href_value = /*result*/ ctx[6].path);
+		},
+		m(target, anchor) {
+			insert(target, li, anchor);
+			append(li, a);
+			append(a, t);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*results*/ 2 && t_value !== (t_value = /*result*/ ctx[6].title + "")) set_data(t, t_value);
+
+			if (dirty & /*results*/ 2 && a_href_value !== (a_href_value = /*result*/ ctx[6].path)) {
+				attr(a, "href", a_href_value);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(li);
+		}
+	};
+}
 
 function create_fragment(ctx) {
 	let div;
 	let input;
 	let t;
 	let ul;
+	let mounted;
+	let dispose;
+	let each_value = /*results*/ ctx[1];
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
 
 	return {
 		c() {
@@ -27,6 +94,11 @@ function create_fragment(ctx) {
 			input = element("input");
 			t = space();
 			ul = element("ul");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
 			this.h();
 		},
 		l(nodes) {
@@ -42,14 +114,20 @@ function create_fragment(ctx) {
 
 			t = claim_space(div_nodes);
 			ul = claim_element(div_nodes, "UL", { id: true, "aria-label": true });
-			children(ul).forEach(detach);
+			var ul_nodes = children(ul);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(ul_nodes);
+			}
+
+			ul_nodes.forEach(detach);
 			div_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			attr(input, "class", "searchInput svelte-tjn9x7");
 			input.autofocus = "";
-			attr(input, "placeholder", "search ↵");
+			attr(input, "placeholder", "search posts ↵");
 			attr(input, "aria-label", "search");
 			attr(input, "type", "search");
 			attr(ul, "id", "searchResults");
@@ -59,22 +137,98 @@ function create_fragment(ctx) {
 		m(target, anchor) {
 			insert(target, div, anchor);
 			append(div, input);
+			set_input_value(input, /*searchText*/ ctx[0]);
 			append(div, t);
 			append(div, ul);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(ul, null);
+			}
+
+			if (!mounted) {
+				dispose = [
+					listen(input, "input", /*input_input_handler*/ ctx[4]),
+					listen(input, "keyup", /*search*/ ctx[2])
+				];
+
+				mounted = true;
+			}
 		},
-		p: noop,
+		p(ctx, [dirty]) {
+			if (dirty & /*searchText*/ 1) {
+				set_input_value(input, /*searchText*/ ctx[0]);
+			}
+
+			if (dirty & /*results*/ 2) {
+				each_value = /*results*/ ctx[1];
+				let i;
+
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(ul, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value.length;
+			}
+		},
 		i: noop,
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(div);
+			destroy_each(each_blocks, detaching);
+			mounted = false;
+			run_all(dispose);
 		}
 	};
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let { allContent } = $$props;
+	let posts = allContent.filter(content => content.type == "posts");
+	let searchText;
+	let results = [];
+
+	const search = e => {
+		console.log(e);
+		$$invalidate(1, results = []);
+
+		posts.forEach(post => {
+			if (post.fields.title.includes(searchText) && searchText.length > 0) {
+				results.push({
+					title: post.fields.title,
+					path: post.path
+				});
+			}
+		});
+	};
+
+	function input_input_handler() {
+		searchText = this.value;
+		$$invalidate(0, searchText);
+	}
+
+	$$self.$$set = $$props => {
+		if ("allContent" in $$props) $$invalidate(3, allContent = $$props.allContent);
+	};
+
+	return [searchText, results, search, allContent, input_input_handler];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, null, create_fragment, safe_not_equal, {});
+		init(this, options, instance, create_fragment, safe_not_equal, { allContent: 3 });
 	}
 }
 

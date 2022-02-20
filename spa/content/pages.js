@@ -72,7 +72,10 @@ function create_if_block_2(ctx) {
 function create_if_block_1(ctx) {
 	let search;
 	let current;
-	search = new Search({});
+
+	search = new Search({
+			props: { allContent: /*allContent*/ ctx[1] }
+		});
 
 	return {
 		c() {
@@ -84,6 +87,11 @@ function create_if_block_1(ctx) {
 		m(target, anchor) {
 			mount_component(search, target, anchor);
 			current = true;
+		},
+		p(ctx, dirty) {
+			const search_changes = {};
+			if (dirty & /*allContent*/ 2) search_changes.allContent = /*allContent*/ ctx[1];
+			search.$set(search_changes);
 		},
 		i(local) {
 			if (current) return;
@@ -246,6 +254,8 @@ function create_fragment(ctx) {
 
 			if (/*page*/ ctx[0] === "search") {
 				if (if_block1) {
+					if_block1.p(ctx, dirty);
+
 					if (dirty & /*page*/ 1) {
 						transition_in(if_block1, 1);
 					}
