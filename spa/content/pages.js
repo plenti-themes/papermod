@@ -239,7 +239,7 @@ function create_fragment(ctx) {
 		},
 		h() {
 			attr(h1, "class", "svelte-1elib52");
-			attr(a, "href", "/");
+			attr(a, "href", ".");
 			attr(section, "class", "isMarginAutoCentered svelte-1elib52");
 		},
 		m(target, anchor) {

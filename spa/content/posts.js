@@ -166,7 +166,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			if (img.src !== (img_src_value = "/assets/images/" + /*pic*/ ctx[4])) attr(img, "src", img_src_value);
+			if (img.src !== (img_src_value = "assets/images/" + /*pic*/ ctx[4])) attr(img, "src", img_src_value);
 			attr(img, "alt", "title");
 			attr(img, "class", "svelte-17dn2c9");
 			attr(p, "class", "caption");
@@ -208,7 +208,7 @@ function create_fragment(ctx) {
 			}
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*pic*/ 16 && img.src !== (img_src_value = "/assets/images/" + /*pic*/ ctx[4])) {
+			if (dirty & /*pic*/ 16 && img.src !== (img_src_value = "assets/images/" + /*pic*/ ctx[4])) {
 				attr(img, "src", img_src_value);
 			}
 
