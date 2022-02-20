@@ -151,13 +151,13 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { allContent } = $$props;
-	let tags = allContent.filter(content => content.type == "tags");
+	let { tags = allContent.filter(content => content.type == "tags") } = $$props;
 	let posts = allContent.filter(content => content.type == "posts");
 	let tagList = [];
 
 	tags.forEach(tag => {
 		let count = 0;
-		let tagName = tag.filename.replace(".json", "");
+		let tagName = tag.filename ? tag.filename.replace(".json", "") : tag;
 
 		posts.forEach(post => {
 			if (post.fields.tags && post.fields.tags.includes(tagName)) {
@@ -165,20 +165,25 @@ function instance($$self, $$props, $$invalidate) {
 			}
 		});
 
-		tagList.push({ name: tagName, path: tag.path, count });
+		tagList.push({
+			name: tagName,
+			path: "tags/" + tagName,
+			count
+		});
 	});
 
 	$$self.$$set = $$props => {
 		if ("allContent" in $$props) $$invalidate(1, allContent = $$props.allContent);
+		if ("tags" in $$props) $$invalidate(2, tags = $$props.tags);
 	};
 
-	return [tagList, allContent];
+	return [tagList, allContent, tags];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { allContent: 1 });
+		init(this, options, instance, create_fragment, safe_not_equal, { allContent: 1, tags: 2 });
 	}
 }
 
