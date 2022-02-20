@@ -7,23 +7,19 @@
     <h1 class="siteName ">{ siteName }</h1>
   </header>
   <section class="entry-content">
-    <p>Welcome to demo of hugo’s theme PaperMod.</p>
+    <p>Welcome to demo of Plenti's theme PaperMod.</p>
     <ul class="isListStyledNon">
       <li>
         <strong>PaperMod</strong> is a simple but fast and responsive theme with
         useful feature-set that enhances UX.
       </li>
       <li>Do give a 🌟 on Github !</li>
-      <li>
-        PaperMod is based on theme{" "}
-        <a href="https://github.com/nanxiaobei/hugo-paper">Paper</a>.
-      </li>
     </ul>
   </section>
 
   <div class="social-icons">
     <a
-      href="https://github.com/adityatelange/hugo-PaperMod"
+      href="https://github.com/plenti-themes/papermod"
       target="_blank"
       rel="noopener noreferrer me"
       title="Github"
@@ -67,7 +63,7 @@
   }
 
   p {
-    margin: 0;
+    margin: 10px 0;
   }
 
   li {

@@ -16,7 +16,11 @@
     </div>
     </header>
 
-    <article class="">{@html body}</article>
+    <article class="">
+      {#each body as paragraph}
+        <p>{@html paragraph}</p>
+      {/each}
+    </article>
 
 </section>
 
