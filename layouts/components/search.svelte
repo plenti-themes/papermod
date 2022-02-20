@@ -5,10 +5,9 @@
   let searchText;
   let results = [];
   const search = e => {
-    console.log(e);
     results = [];
     posts.forEach(post => {
-      if (post.fields.title.includes(searchText) && searchText.length > 0) {
+      if (post.fields.title.toLowerCase().includes(searchText.toLowerCase()) && searchText.length > 0) {
         results.push({
           title: post.fields.title,
           path: post.path
