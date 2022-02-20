@@ -44,20 +44,3 @@
     letter-spacing: 1px;
   }
 </style>
-
-
-
-
-
-<!-- <h1>{title}</h1>
-
-<div>
-  {#each description as paragraph}
-    <p>{@html paragraph}</p>
-  {/each}
-</div>
-
-<Uses {content} />
-
-<p><a href="/">Back home</a></p>
- -->
