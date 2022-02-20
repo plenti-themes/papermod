@@ -1,5 +1,5 @@
 <script>
-    export let title, date, readTime, author, pic, caption, body;
+    export let title, date, readTime, author, pic, caption, body, tags;
 </script>
 
 <section class="isMarginAutoCentered">
@@ -21,6 +21,14 @@
         <p>{@html paragraph}</p>
       {/each}
     </article>
+
+    {#if tags}
+      <ul>
+        {#each tags as tag}
+          <li><a href="tags/{tag}">{tag}</a></li>  
+        {/each}
+      </ul>
+    {/if}
 
 </section>
 
@@ -51,8 +59,21 @@
     max-width: 100%;
   }
 
-  a:link {
-    color:  pink;
-    text-decoration:  none;
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  li {
+    margin-right: 10px;
+    background-color: #cecece;
+    padding: 20px 15px 10px 15px;
+    border-radius: 8px;
+  }
+
+  ul li a {
+    text-decoration: none;
+    color: black;
   }
 </style>

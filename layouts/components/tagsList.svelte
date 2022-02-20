@@ -5,7 +5,7 @@
 
 <ul>
   {#each tags as tag}
-    <li><a href="{tag.path}">{tag.filename}<sup>3</sup></a></li>  
+    <li><a href="{tag.path}">{tag.filename.replace(".json", "")}<sup>3</sup></a></li>  
   {/each}
 </ul>
 
