@@ -4,12 +4,7 @@
 
 <nav class="isFlex seven columns">
   <div class="logoSide isFlex">
-    <a
-      href="/"
-      accesskey="h"
-      title="PaperMod (Alt + H)"
-      class="logo"
-    >
+    <a href="." accesskey="h" title="PaperMod (Alt + H)" class="logo">
       PaperMod
     </a>
     <span class="toggle">
@@ -25,10 +20,10 @@
   </div>
 
   <ul id="menu" onscroll="menu_on_scroll()" class="menu isFlex">
-    <li><a href="/archive" title="Archive"><span>Archive</span></a></li>
-    <li><a href="/categories" title="Categories"><span>Categories</span></a></li>
-    <li><a href="/search" title="Search (Alt + /)" accesskey="/"><span>Search</span></a></li>
-    <li><a href="/tags" title="Tags"><span>Tags</span></a></li>
+    <li><a href="archive" title="Archive"><span>Archive</span></a></li>
+    <li><a href="categories" title="Categories"><span>Categories</span></a></li>
+    <li><a href="search" title="Search (Alt + /)" accesskey="/"><span>Search</span></a></li>
+    <li><a href="tags" title="Tags"><span>Tags</span></a></li>
   </ul>
 </nav>
 
