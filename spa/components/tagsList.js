@@ -18,17 +18,18 @@ import {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[2] = list[i];
+	child_ctx[4] = list[i];
 	return child_ctx;
 }
 
-// (7:2) {#each tags as tag}
+// (24:2) {#each tagList as tag}
 function create_each_block(ctx) {
 	let li;
 	let a;
-	let t0_value = /*tag*/ ctx[2].filename.replace(".json", "") + "";
+	let t0_value = /*tag*/ ctx[4].name + "";
 	let t0;
 	let sup;
+	let t1_value = /*tag*/ ctx[4].count + "";
 	let t1;
 	let a_href_value;
 
@@ -38,7 +39,7 @@ function create_each_block(ctx) {
 			a = element("a");
 			t0 = text(t0_value);
 			sup = element("sup");
-			t1 = text("3");
+			t1 = text(t1_value);
 			this.h();
 		},
 		l(nodes) {
@@ -49,7 +50,7 @@ function create_each_block(ctx) {
 			t0 = claim_text(a_nodes, t0_value);
 			sup = claim_element(a_nodes, "SUP", { class: true });
 			var sup_nodes = children(sup);
-			t1 = claim_text(sup_nodes, "3");
+			t1 = claim_text(sup_nodes, t1_value);
 			sup_nodes.forEach(detach);
 			a_nodes.forEach(detach);
 			li_nodes.forEach(detach);
@@ -57,7 +58,7 @@ function create_each_block(ctx) {
 		},
 		h() {
 			attr(sup, "class", "svelte-1iku80c");
-			attr(a, "href", a_href_value = /*tag*/ ctx[2].path);
+			attr(a, "href", a_href_value = /*tag*/ ctx[4].path);
 			attr(a, "class", "svelte-1iku80c");
 			attr(li, "class", "svelte-1iku80c");
 		},
@@ -77,7 +78,7 @@ function create_each_block(ctx) {
 
 function create_fragment(ctx) {
 	let ul;
-	let each_value = /*tags*/ ctx[0];
+	let each_value = /*tagList*/ ctx[0];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -116,8 +117,8 @@ function create_fragment(ctx) {
 			}
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*tags*/ 1) {
-				each_value = /*tags*/ ctx[0];
+			if (dirty & /*tagList*/ 1) {
+				each_value = /*tagList*/ ctx[0];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -151,12 +152,27 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { allContent } = $$props;
 	let tags = allContent.filter(content => content.type == "tags");
+	let posts = allContent.filter(content => content.type == "posts");
+	let tagList = [];
+
+	tags.forEach(tag => {
+		let count = 0;
+		let tagName = tag.filename.replace(".json", "");
+
+		posts.forEach(post => {
+			if (post.fields.tags && post.fields.tags.includes(tagName)) {
+				count++;
+			}
+		});
+
+		tagList.push({ name: tagName, path: tag.path, count });
+	});
 
 	$$self.$$set = $$props => {
 		if ("allContent" in $$props) $$invalidate(1, allContent = $$props.allContent);
 	};
 
-	return [tags, allContent];
+	return [tagList, allContent];
 }
 
 class Component extends SvelteComponent {
