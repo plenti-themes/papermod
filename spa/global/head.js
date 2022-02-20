@@ -116,22 +116,22 @@ function create_fragment(ctx) {
 			attr(meta1, "content", "width=device-width,initial-scale=1");
 			attr(base, "href", base_href_value = /*env*/ ctx[1].local ? "/" : /*env*/ ctx[1].baseurl);
 			attr(script, "type", "module");
-			if (script.src !== (script_src_value = "/spa/ejected/main.js")) attr(script, "src", script_src_value);
+			if (script.src !== (script_src_value = "spa/ejected/main.js")) attr(script, "src", script_src_value);
 			attr(link0, "rel", "preconnect");
 			attr(link0, "href", "https://fonts.gstatic.com");
 			attr(link1, "href", "https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap");
 			attr(link1, "rel", "stylesheet");
 			attr(link2, "rel", "icon");
 			attr(link2, "type", "image/svg+xml");
-			attr(link2, "href", "/assets/favicon.png");
+			attr(link2, "href", "assets/favicon.png");
 			attr(link3, "rel", "stylesheet");
-			attr(link3, "href", "/assets/css/normalize.css");
+			attr(link3, "href", "assets/css/normalize.css");
 			attr(link4, "rel", "stylesheet");
-			attr(link4, "href", "/assets/css/skeleton.css");
+			attr(link4, "href", "assets/css/skeleton.css");
 			attr(link5, "rel", "stylesheet");
-			attr(link5, "href", "/assets/css/extended.css");
+			attr(link5, "href", "assets/css/extended.css");
 			attr(link6, "rel", "stylesheet");
-			attr(link6, "href", "/spa/bundle.css");
+			attr(link6, "href", "spa/bundle.css");
 		},
 		m(target, anchor) {
 			insert(target, head, anchor);

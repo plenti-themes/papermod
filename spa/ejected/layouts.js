@@ -1,10 +1,6 @@
 export {default as layouts_components_archive_svelte} from '../components/archive.js';
-export {default as layouts_components_ball_svelte} from '../components/ball.js';
-export {default as layouts_components_block_svelte} from '../components/block.js';
 export {default as layouts_components_categoriesList_svelte} from '../components/categoriesList.js';
-export {default as layouts_components_decrementer_svelte} from '../components/decrementer.js';
 export {default as layouts_components_grid_svelte} from '../components/grid.js';
-export {default as layouts_components_incrementer_svelte} from '../components/incrementer.js';
 export {default as layouts_components_opening_svelte} from '../components/opening.js';
 export {default as layouts_components_pager_svelte} from '../components/pager.js';
 export {default as layouts_components_postCard_svelte} from '../components/postCard.js';
@@ -15,7 +11,6 @@ export {default as layouts_components_tagsList_svelte} from '../components/tagsL
 export {default as layouts_components_toggleTheme_svelte} from '../components/toggleTheme.js';
 export {default as layouts_content_404_svelte} from '../content/404.js';
 export {default as layouts_content_attributions_svelte} from '../content/attributions.js';
-export {default as layouts_content_blog_svelte} from '../content/blog.js';
 export {default as layouts_content_buildlog_svelte} from '../content/buildlog.js';
 export {default as layouts_content_index_svelte} from '../content/index.js';
 export {default as layouts_content_pages_svelte} from '../content/pages.js';
