@@ -13,7 +13,7 @@
   <h1>{ page }</h1>
 
   {#if page === "archive" }
-    <Archive allContent />
+    <Archive {allContent} />
   {/if}
 
   {#if page === "search" }
