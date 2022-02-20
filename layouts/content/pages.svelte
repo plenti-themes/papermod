@@ -21,7 +21,7 @@
   {/if}
 
   {#if page === "tags" }
-    <TagsList />
+    <TagsList {allContent} />
   {/if}
 
   {#if page === "categories" }

@@ -1,5 +1,5 @@
 <script>
-  export let title;
+  export let title, env;
 </script>
 
 <head>
@@ -8,6 +8,7 @@
 
   <title>{ title }</title>
 
+  <base href="{ env.local ? '/' : env.baseurl }">
   <script type="module" src="/spa/ejected/main.js"></script>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
