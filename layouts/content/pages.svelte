@@ -28,7 +28,7 @@
     <CategoriesList />
   {/if}
 
-  <p><a href="/">Back home</a></p>
+  <p><a href=".">Back home</a></p>
 
 </section>
 

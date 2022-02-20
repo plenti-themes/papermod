@@ -4,7 +4,7 @@
 
 <section class="isMarginAutoCentered">
 
-    <img src="/assets/images/{pic}" alt="title">
+    <img src="assets/images/{pic}" alt="title">
     <p class="caption">{caption}</p>
 
     <header class="">
