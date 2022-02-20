@@ -25,7 +25,7 @@
       title="Github"
       class=""
     >
-      <img src="../assets/icons/githubicon-26px.png" alt="github" />
+      <img src="assets/icons/githubicon-26px.png" alt="github" />
     </a>
     <a
       href="https://ko-fi.com/adityatelange"
@@ -34,7 +34,7 @@
       title="Ko fi"
       class=""
     >
-      <img src="../assets/icons/ko-fi-26px.png" alt="ko-fi" />
+      <img src="assets/icons/ko-fi-26px.png" alt="ko-fi" />
     </a>
     <a
       href="index.xml"
@@ -42,7 +42,7 @@
       rel="noopener noreferrer me"
       title="Rss"
     >
-      <img src="../assets/icons/rss-26px.png" alt="rss feed" />
+      <img src="assets/icons/rss-26px.png" alt="rss feed" />
     </a>
   </div>
 </article>
