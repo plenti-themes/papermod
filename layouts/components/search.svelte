@@ -9,7 +9,10 @@
     results = [];
     posts.forEach(post => {
       if (post.fields.title.includes(searchText) && searchText.length > 0) {
-        results.push(post.fields.title);
+        results.push({
+          title: post.fields.title,
+          path: post.path
+        });
       }
     });
   }
@@ -23,10 +26,10 @@
     autofocus=""
     placeholder="search posts ↵"
     aria-label="search"
-    type="search">
+    type="search" />
   <ul id="searchResults" aria-label="search results">
     {#each results as result}
-      <li>{result}</li>
+      <li><a href="{result.path}">{result.title}</a></li>
     {/each}
   </ul>
 </div>
