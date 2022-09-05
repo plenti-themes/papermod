@@ -1,1 +1,1 @@
-export let env = { local: false, baseurl: '/papermod/', cms: { repo: '', redirectUrl: '', appId: '' } };
+export let env={local:!1,baseurl:"/papermod/",cms:{repo:"",redirectUrl:"",appId:"",branch:""}}
