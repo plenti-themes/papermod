@@ -5,7 +5,7 @@
 
 	export let content, allContent, siteName;
 
-	$: currentPage = content.pager;
+	$: currentPage = content.pager ? content.pager : 1;
 	let postsPerPage = 5;
 	let allPosts = allContent.filter(content => content.type == "posts");
 	let totalPosts = allPosts.length;
